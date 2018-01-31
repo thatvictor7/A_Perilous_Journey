@@ -1,6 +1,6 @@
 require 'minitest/autorun'
 require 'minitest/pride'
-require "./lib/linked_list"
+require './lib/linked_list'
 require './lib/node'
 require 'pry'
 
@@ -39,4 +39,30 @@ class LinkedListTest < Minitest::Test
     assert_equal "The West family", list.to_string
   end
 
+  def test_new_surname
+    list = LinkedList.new
+    assert_instance_of Node, list.append("Rhodes")
+  end
+
+  def test_count_two_append_surnames
+    list = LinkedList.new
+    list.append("Rhodes")
+    list.append("Hardy")
+    assert_equal 2, list.count
+  end
+
+  def test_modified_to_string
+    list = LinkedList.new
+    list.append("Rhodes")
+    list.append("Hardy")
+    expected = "The Rhodes family, followed by the Hardy family"
+    # assert_equal expected, list.to_string
+  end
+
+  def test_prepending_node
+    list = LinkedList.new
+    list.append("Henderson")
+    list.prepend("McKinney")
+   binding.pry
+  end
 end

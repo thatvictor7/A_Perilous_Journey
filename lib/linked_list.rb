@@ -1,24 +1,33 @@
+require 'pry'
 class LinkedList
   attr_reader :head, :count
+
+
   def initialize
     @head = nil
     @count = 0
-    @name = []
+    # @nodes  = Node.new(data)
   end
 
   def append(data)
-    @name.push(data)
-    node = node_test(data)
-    @head = node
+    node = single_node(data)
+
     @count += 1
-    node
+    @head = node
   end
 
-  def node_test(surname)
+  def prepend(data)
+    node = single_node(data)
+    @next_node = @head
+    @head = node
+     #binding.pry
+  end
+
+  def single_node(surname)
     Node.new(surname)
   end
 
   def to_string
-    "The #{@name.first} family"
+    "The #{head.surname} family"
   end
 end
