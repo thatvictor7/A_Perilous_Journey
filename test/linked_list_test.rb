@@ -27,6 +27,15 @@ class LinkedListTest < Minitest::Test
     assert_nil list.head.next_node
   end
 
+  def test_next_node_is_nil_from_head
+    list = LinkedList.new
+
+    list.append("Rhodes")
+    list.append("Hardy")
+    assert_nil list.head.next_node
+  end
+
+
   def test_list_count_at_one
     list = LinkedList.new
     list.append("West")
@@ -56,13 +65,18 @@ class LinkedListTest < Minitest::Test
     list.append("Rhodes")
     list.append("Hardy")
     expected = "The Rhodes family, followed by the Hardy family"
-    # assert_equal expected, list.to_string
+    assert_equal expected, list.to_string
   end
 
   def test_prepending_node
     list = LinkedList.new
+    list.append("Hardy")
+    list.append("Brooks")
     list.append("Henderson")
-    list.prepend("McKinney")
-   binding.pry
+     list.prepend("McKinney")
+    
+
   end
+
+
 end
